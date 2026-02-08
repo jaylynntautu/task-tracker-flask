@@ -25,7 +25,7 @@ frameworks, routing, templates, and database integration. I had some previous
 exposure to Flask during my internship, but this project helped me better
 understand building a complete web application from scratch.
 
-[Software Demo Video](ADD VIDEO LINK HERE)
+[Software Demo Video](https://www.loom.com/share/b059e5f76de545e3a3a9210045d6eadc)
 
 ---
 
