@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 style="margin-top:0;">
+    {% if task %}Edit Task{% else %}New Task{% endif %}
+</h2>
+
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="post">
+
+    <p>
+        <label>
+            Title
+            <input
+                type="text"
+                name="title"
+                maxlength="60"
+                placeholder="e.g., Finish CSE 310 module"
+                value="{{ task.title if task else '' }}"
+            >
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Notes (optional)
+            <textarea
+                name="notes"
+                placeholder="Extra details..."
+            >{{ task.notes if task else '' }}</textarea>
+        </label>
+    </p>
+
+    <div class="form-actions">
+        <button class="btn primary" type="submit">Save</button>
+        <a class="btn" href="/">Cancel</a>
+    </div>
+
+    <p class="helper">
+        Title is required (max 60 characters).
+    </p>
+
+</form>
+
+{% endblock %}

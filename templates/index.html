@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="filters">
+    <a class="pill {% if status=='all' %}active{% endif %}" href="/?status=all">
+        All
+    </a>
+
+    <a class="pill {% if status=='active' %}active{% endif %}" href="/?status=active">
+        Active
+    </a>
+
+    <a class="pill {% if status=='completed' %}active{% endif %}" href="/?status=completed">
+        Completed
+    </a>
+</div>
+
+
+<ul class="list">
+{% for task in tasks %}
+    <li class="item">
+
+        <div>
+            <div>
+                <span class="task-title">{{ task.title }}</span>
+
+                {% if task.completed_at %}
+                    <span class="badge done">Completed</span>
+                {% else %}
+                    <span class="badge">Active</span>
+                {% endif %}
+            </div>
+
+            {% if task.notes %}
+                <div class="task-notes">{{ task.notes }}</div>
+            {% endif %}
+        </div>
+
+        <div class="actions">
+            <a class="btn" href="/edit/{{ task.id }}">Edit</a>
+            <a class="btn" href="/toggle/{{ task.id }}">Toggle</a>
+        </div>
+
+    </li>
+{% endfor %}
+</ul>
+
+
+{% if tasks|length == 0 %}
+    <p class="helper">No tasks yet. Click "New Task" to create one.</p>
+{% endif %}
+
+{% endblock %}
